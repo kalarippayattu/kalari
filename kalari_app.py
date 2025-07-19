@@ -2,7 +2,11 @@
 import streamlit as st
 import cv2
 import tempfile
-import mediapipe as mp
+try:
+    import mediapipe as mp
+except ModuleNotFoundError:
+    mp = None
+
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
