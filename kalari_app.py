@@ -12,6 +12,22 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 try:
     import mediapipe as mp
+except ModuleNotFoundError:
+    mp = None
+
+if mp is not None:
+    mp_drawing = mp.solutions.drawing_utils
+    mp_pose = mp.solutions.pose
+
+    with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
+        st.info("Pose detection is enabled.")
+        # For now, just pass or put your future logic here
+        pass
+else:
+    st.warning("⚠️ Pose detection is currently disabled because MediaPipe is not installed.")
+
+try:
+    import mediapipe as mp
 except ImportError:
     mp = None
 if mp is None:
