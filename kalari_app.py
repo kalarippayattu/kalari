@@ -6,6 +6,12 @@ import mediapipe as mp
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
+try:
+    import mediapipe as mp
+except ImportError:
+    st.error("Mediapipe not available in this environment.")
+    st.stop()
+
 
 st.title("🤺 Kalari Pose Feedback App")
 
