@@ -9,6 +9,16 @@ import pandas as pd
 try:
     import mediapipe as mp
 except ImportError:
+    mp = None
+if mp is None:
+    st.warning("Pose detection is currently disabled because MediaPipe is not installed.")
+else:
+    with mp.solutions.pose.Pose(...) as pose:
+        # your pose detection code here
+
+try:
+    import mediapipe as mp
+except ImportError:
     st.error("Mediapipe not available in this environment.")
     st.stop()
 
